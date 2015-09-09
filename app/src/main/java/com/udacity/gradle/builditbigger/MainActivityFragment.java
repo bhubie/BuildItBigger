@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -38,9 +39,9 @@ public class MainActivityFragment extends Fragment {
                 String joke = jokeTeller.randomJoke();
 
                 Toast.makeText(getActivity(), joke, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), JokeActivity.class);
-                intent.putExtra("JOKE", joke);
-                startActivity(intent);
+
+                new JokeAsyncTask(getActivity().getApplicationContext()).execute();
+
             }
         });
 
