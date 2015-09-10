@@ -1,17 +1,21 @@
 package com.example.bhuber.myapplication.backend;
 
+import com.example.JokeTeller;
+
 /**
  * The object model for the data we are sending through endpoints
  */
 public class MyBean {
 
-    private String myData;
 
-    public String getData() {
-        return myData;
+    private JokeTeller joke;
+
+    public MyBean() {
+        joke = new JokeTeller();
     }
 
-    public void setData(String data) {
-        myData = data;
+    public String getJoke() {
+        return joke.randomJoke();
     }
+
 }

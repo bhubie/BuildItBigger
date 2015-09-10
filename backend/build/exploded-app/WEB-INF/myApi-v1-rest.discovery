@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/ezfQ95EaT_Vv-sGx8TS7OWpP6qg\"",
+ "etag": "\"u_zXkMELIlX4ktyNbM2XKD4vK8E/iHyRVT9sFgisic8iWCOrqk6ABrY\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
@@ -77,28 +77,21 @@
    "id": "MyBean",
    "type": "object",
    "properties": {
-    "data": {
+    "joke": {
      "type": "string"
     }
    }
   }
  },
  "methods": {
-  "getJoke": {
-   "id": "myApi.getJoke",
-   "path": "mybean",
-   "httpMethod": "GET",
-   "response": {
-    "$ref": "MyBean"
-   },
-   "scopes": [
-    "https://www.googleapis.com/auth/userinfo.email"
-   ]
-  },
-  "sayHi": {
-   "id": "myApi.sayHi",
-   "path": "sayHi",
+  "putJoke": {
+   "id": "myApi.putJoke",
+   "path": "putJoke",
    "httpMethod": "POST",
+   "request": {
+    "$ref": "MyBean",
+    "parameterName": "resource"
+   },
    "response": {
     "$ref": "MyBean"
    },
