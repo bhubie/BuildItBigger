@@ -4,6 +4,9 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.ProgressBar;
+
 import com.example.bhuber.jokelibrary.JokeActivity;
 import com.example.bhuber.myapplication.backend.myApi.MyApi;
 import com.example.bhuber.myapplication.backend.myApi.model.MyBean;
@@ -23,9 +26,22 @@ public class JokeAsyncTask extends AsyncTask<Void, Void, String>{
     private static MyApi myApiService = null;
 
     private Context mContext;
+    private ProgressBar mProgressBar;
 
-    public JokeAsyncTask(Context context){
+    public JokeAsyncTask(Context context, ProgressBar progressBar){
+
         this.mContext = context;
+        this.mProgressBar = progressBar;
+    }
+
+
+    //un-hide the progressbar while we are loading the joke
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -59,6 +75,10 @@ public class JokeAsyncTask extends AsyncTask<Void, Void, String>{
 
     @Override
     protected void onPostExecute(String result) {
+        //Try and hide the progessbar once the task is executed
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.GONE);
+        }
         Intent intent = new Intent(mContext, JokeActivity.class);
         intent.putExtra("JOKE", result);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.JokeTeller;
@@ -22,6 +23,7 @@ import com.google.android.gms.ads.AdView;
 public class MainActivityFragment extends Fragment {
 
     private Button mJokebutton;
+    private ProgressBar mProgressbar;
     private final JokeTeller jokeTeller = new JokeTeller();
     public MainActivityFragment() {
     }
@@ -32,6 +34,8 @@ public class MainActivityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
         mJokebutton = (Button)root.findViewById(R.id.jokeButton);
+        mProgressbar = (ProgressBar)root.findViewById(R.id.progressBar);
+        mProgressbar.setVisibility(View.INVISIBLE);
 
         mJokebutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +44,7 @@ public class MainActivityFragment extends Fragment {
 
                 Toast.makeText(getActivity(), joke, Toast.LENGTH_SHORT).show();
 
-                new JokeAsyncTask(getActivity().getApplicationContext()).execute();
+                new JokeAsyncTask(getActivity().getApplicationContext(), mProgressbar).execute();
 
             }
         });
