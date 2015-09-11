@@ -1,6 +1,7 @@
 package com.udacity.gradle.builditbigger;
 
 import android.test.AndroidTestCase;
+import android.widget.ProgressBar;
 
 /**
  * Created by bhuber on 9/9/2015.
@@ -12,7 +13,8 @@ public class AsyncTaskTests extends AndroidTestCase {
     public void taskTest(){
 
         String taskResult = null;
-        JokeAsyncTask task = new JokeAsyncTask(getContext());
+
+        JokeAsyncTask task = new JokeAsyncTask(getContext(), null );
         task.execute();
 
         try {
