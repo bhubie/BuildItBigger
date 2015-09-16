@@ -21,10 +21,10 @@ android {
 
     productFlavors {
         free {
-            "com.udacity.gradle.builditbigger.free"
+            applicationId = "com.udacity.gradle.builditbigger.free"
         }
         paid {
-            "com.udacity.gradle.builditbigger.paid"
+            applicationId = "com.udacity.gradle.builditbigger.paid"
         }
     }
 }
@@ -37,6 +37,6 @@ dependencies {
     compile project(path: ':backend', configuration: 'android-endpoints')
 
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'com.google.android.gms:play-services:7.8.0'
+    compile 'com.google.android.gms:play-services-ads:7.5.0'
     compile 'com.android.support:support-v4:22.0.0'
 }
